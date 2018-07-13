@@ -51,11 +51,60 @@ namespace HairSalon.Models
                 allClients.Add(newClient);
             }
             conn.Close();
-            if (conn !=null)
+            if (conn != null)
             {
                 conn.Dispose();
             }
             return allClients;
+        }
+
+        public override bool Equals(System.Object otherClient)
+        {
+
+            if (!(otherClient is Client))
+            {
+                return false;
+            }
+            else
+            {
+                Client newClient = (Client)otherClient;
+                bool idEquality = (this.GetId() == newClient.GetId());
+                bool nameEquality = (this.GetName() == newClient.GetName());
+                bool stylistIdEquality = (this.GetStylistId() == newClient.GetStylistId());
+                return (idEquality && nameEquality && stylistIdEquality);
+            }
+        }
+
+        public void Save()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO clients (id, name, stylist_id) VALUES (@thisId, @thisName, @thisStylist_Id;";
+
+            MySqlParameter id = new MySqlParameter();
+            id.ParameterName = "@thisId";
+            id.Value = this._id;
+            cmd.Parameters.Add(id);
+
+            MySqlParameter name = new MySqlParameter();
+            name.ParameterName = "@thisName";
+            name.Value = this._name;
+            cmd.Parameters.Add(name);
+
+            MySqlParameter stylist_id = new MySqlParameter();
+            stylist_id.ParameterName = "@thisStylist_Id";
+            stylist_id.Value = this._stylistId;
+            cmd.Parameters.Add(stylist_id);
+
+            cmd.ExecuteNonQuery();
+            _id = (int)cmd.LastInsertedId;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
         }
     }
 }
