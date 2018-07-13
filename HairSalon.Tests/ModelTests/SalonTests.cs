@@ -1,9 +1,12 @@
+using System.Collections.Generic;
+using MySql.Data.MySqlClient;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using HairSalon.Modeks;
 
 namespace HairSalon.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class HairSalonTests
     {
         [TestMethod]
         public void TestMethod1()

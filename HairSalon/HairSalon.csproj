@@ -1,22 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <Folder Include="wwwroot\" />
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="New Folder\" />
     <Folder Include="Views\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="MySqlConnector" Version="0.42.3" />
   </ItemGroup>
-
   <ItemGroup>
     <None Remove="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
 </Project>
