@@ -30,6 +30,7 @@
         
     <None Remove="README.md" />
     <None Remove="Views\Home\Index.html" />
+    <None Remove="devin_mounts.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Shared\_Layout.cshtml" />
