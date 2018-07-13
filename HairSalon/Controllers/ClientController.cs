@@ -14,13 +14,14 @@ namespace HairSalon.Controllers
         public ActionResult All()
         {
             List<Client> result = Client.GetAll();
-            return View();
+            return View(result);
         }
 
         [HttpGet("/client/add")]
-        public ActionResult add()
+        public ActionResult Add(string name, int stylistId)
         {
-            List<Stylist> results = Stylist.GetAll();
+            int id = 0;
+            Client newClient = new Client(id, name, stylistId);
             return View();
         }
     }
