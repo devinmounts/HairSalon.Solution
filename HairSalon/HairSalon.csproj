@@ -6,21 +6,40 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Models\" />
     <Folder Include="Controllers\" />
-    <Folder Include="New Folder\" />
     <Folder Include="Views\" />
     <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Client\" />
+    <Folder Include="Views\Stylist\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
     <PackageReference Include="MySqlConnector" Version="0.42.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+        
     <None Remove="README.md" />
+    <None Remove="Views\Home\Index.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Shared\_Layout.cshtml" />
+    <Content Remove="Views\Stylist\All.cshtml" />
+    <Content Remove="wwwroot\images\afro-beautiful-curly-157920.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Shared\_Layout.cshtml" />
+    <None Include="wwwroot\images\afro-beautiful-curly-157920.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\ViewStart.cs" />
   </ItemGroup>
 </Project>
