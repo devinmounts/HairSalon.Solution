@@ -14,6 +14,16 @@ A web application that allows employees at a hair salon to create and view styli
 1. Run `dotnet test` from the test directory to run the testing suite
 1. Alter `devin_mounts` in Startup.cs to connect to the database of your choice.
 1. Navigate to the project folder in the terminal and run `dotnet add package MySqlConnector` add `using MySql.Data.MySqlClient;` to namespace references. 
+1. Follow instructions for Downloading, Configuring ports and Runing MAMP :https://www.learnhowtoprogram.com/c/database-basics-ee7c9fd3-fcd9-4fff-8b1d-5ff7bfcbf8f0/introducing-and-installing-mamp
+1. Enter followin command to open MySql connection in terminal : Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
+1. In MySql:
+    1.CREATE DATABASE db_name;
+    1.USE db_name;
+    1.CREATE TABLE `db_name`.`stylists` ( `id` INT(11) NOT NULL AUTO_INCREMENT ,`name` VARCHAR(255) NOT NULL , `details` VARCHAR(255) NOT NULL , PRIMARY KEY(`id`)) ENGINE = InnoDB;
+    1.CREATE TABLE `db_name`.`clients` ( `id` INT(11) NOT NULL AUTO_INCREMENT ,`name` VARCHAR(255) NOT NULL , `stylist_id` INT(11) NOT NULL , PRIMARY KEY (`id`))ENGINE = InnoDB;
+1.Navigate to the phpMyAdmin link under tools tab.
+1.Copy database under Operations tab, and name `db_name_test`.
+USING query
 
 ## Usage
 
