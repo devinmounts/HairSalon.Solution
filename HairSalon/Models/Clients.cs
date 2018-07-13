@@ -112,6 +112,7 @@ namespace HairSalon.Models
             }
         }
 
+
         public static void DeleteAll()
         {
             MySqlConnection conn = DB.Connection();
@@ -168,7 +169,7 @@ namespace HairSalon.Models
             int Id = 0;
             string Name = String.Empty;
             int StylistId = 0;
-            while(rdr.Read())
+            while (rdr.Read())
             {
                 Id = rdr.GetInt32(0);
                 Name = rdr.GetString(1);
@@ -183,6 +184,41 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
             return foundClient;
+        }
+
+
+        public static Stylist Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM stylists WHERE id = @thisStylistId;";
+
+            MySqlParameter searchId = new MySqlParameter();
+            searchId.ParameterName = "@thisStylistId";
+            searchId.Value = id;
+            cmd.Parameters.Add(searchId);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int Id = 0;
+            string Name = String.Empty;
+            int StylistId = 0;
+            while(rdr.Read())
+            {
+                Id = rdr.GetInt32(0);
+                Name = rdr.GetString(1);
+                Details = rdr.GetInt32(2);
+            }
+
+            Stylist foundStylist = new Stylist(Id, Name, Details);
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return foundStylist;
         }
 
     }
