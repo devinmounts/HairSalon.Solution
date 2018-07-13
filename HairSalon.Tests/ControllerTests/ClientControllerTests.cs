@@ -1,10 +1,26 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using HairSalon.Controllers;
+using HairSalon.Models;
+
 namespace HairSalon.Tests.ControllerTests
 {
-    public class ClientControllerTests
+    [TestClass]
+    public class ClientControllerTests : IDisposable
     {
-        public ClientControllerTests()
+        public void Dispose()
         {
+            Client.DeleteAll();
+        }
+
+        [TestMethod]
+        public void All_ReturnsCorrectView_True()
+        {
+            ClientController controller = new ClientController();
+            ActionResult allView = controller.All();
+            Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
     }
 }
