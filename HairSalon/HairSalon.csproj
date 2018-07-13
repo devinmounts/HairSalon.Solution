@@ -38,6 +38,7 @@
     <Content Remove="Views\_ViewStart.cshtml" />
     <Content Remove="wwwroot\images\accessories-adult-attractive-935952.jpg" />
     <Content Remove="wwwroot\images\adult-barber-barbershop-897253.jpg" />
+    <Content Remove="wwwroot\images\background-black-close-up-952670.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Shared\_Layout.cshtml" />
@@ -45,6 +46,7 @@
     <None Include="wwwroot\css\styles.css" />
     <None Include="wwwroot\images\hair02.jpg" />
     <None Include="wwwroot\images\hair03.jpg" />
+    <None Include="wwwroot\images\background.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\ViewStart.cs" />
