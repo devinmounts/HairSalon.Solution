@@ -7,10 +7,10 @@ namespace HairSalon.Models
     public class Client
     {
         private int _id;
-        private int _stylistId;
         private string _name;
+        private int _stylistId;
 
-        public Client(int id, int stylistId, string name)
+        public Client(int id, string name, int stylistId)
         {
             _id = id;
             _stylistId = stylistId;
@@ -45,9 +45,9 @@ namespace HairSalon.Models
             while (rdr.Read())
             {
                 int Id = rdr.GetInt32(0);
-                int StylistId = rdr.GetInt32(2);
                 string Name = rdr.GetString(1);
-                Client newClient = new Client(Id, StylistId, Name);
+                int StylistId = rdr.GetInt32(2);
+                Client newClient = new Client(Id, Name, StylistId);
                 allClients.Add(newClient);
             }
             conn.Close();
@@ -86,8 +86,6 @@ namespace HairSalon.Models
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"INSERT INTO clients (id, name, stylist_id) VALUES (@thisId, @thisName, @thisStylist_Id);";
-            //cmd.CommandText = @"INSERT INTO `clients` (`id`, `name`, `stylist_id`) VALUES (@thisId, @thisName, @thisStylist_Id);";
-
 
             MySqlParameter id = new MySqlParameter();
             id.ParameterName = "@thisId";
@@ -130,5 +128,40 @@ namespace HairSalon.Models
                 conn.Dispose();
             }
         }
+
+        public static Client Find(int id)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM clients WHERE searchId = @thisId;";
+
+            MySqlParameter searchId = new MySqlParameter();
+            searchId.ParameterName = "@thisId";
+            searchId.Value = id;
+            cmd.Parameters.Add(searchId);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            int Id = 0;
+            string Name = String.Empty;
+            int StylistId = 0;
+            while(rdr.Read())
+            {
+                Id = rdr.GetInt32(0);
+                Name = rdr.GetString(1);
+                StylistId = rdr.GetInt32(2);
+            }
+
+            Client foundClient = new Client(Id, Name, StylistId);
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return foundClient;
+        }
+
     }
 }
