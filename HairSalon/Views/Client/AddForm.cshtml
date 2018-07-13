@@ -1,22 +1,22 @@
 ﻿@{
     Layout = "_Layout";
 }
-<div class="container id="add-container">
-    <h1 class="light-text">Enter a new Client</h1>
+<div class="container" id="add-container">
+    <h1>Enter a new Client</h1>
     <form class="form" action="/client/add" method="post">
         <div class="form-group">
-            <label class=light-text for="name">Enter the name of Client</label>
+            <label for="name">Enter the name of Client</label>
             <input type="text" name="name">
         </div>
         <div>
-            <label classfor="stylist">Choose a Stylist</label>
-            <select class="form-group" name="stylist">
+            <label for="stylistId">Choose a Stylist</label>
+            <select class="form-group" name="stylistId">
                 @foreach (var stylist in Model)
                 {
                     <option value="@stylist.GetId()">@stylist.GetName()</option>
                 }
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" name="button">Add New Food</button>
+        <button type="submit" class="btn btn-primary" name="button">Add New Client</button>
     </form>
 </div>

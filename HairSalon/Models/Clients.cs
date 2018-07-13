@@ -13,8 +13,8 @@ namespace HairSalon.Models
         public Client(int id, string name, int stylistId)
         {
             _id = id;
-            _stylistId = stylistId;
             _name = name;
+            _stylistId = stylistId;
         }
 
         public int GetId()
