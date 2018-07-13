@@ -29,7 +29,8 @@ namespace HairSalon.Controllers
         {
             int id = 0;
             Client newClient = new Client(id, name, stylistId);
-            return View();
+            newClient.Save();
+            return RedirectToAction("All");
         }
 
     }

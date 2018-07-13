@@ -27,8 +27,19 @@ namespace HairSalon.Tests.ControllerTests
         public void AddForm_ReturnsCorrectView_True()
         {
             ClientController controller = new ClientController();
-            ActionResult allView = controller.AddForm();
-            Assert.IsInstanceOfType(allView, typeof(ViewResult));
+            ActionResult addFormView = controller.AddForm();
+            Assert.IsInstanceOfType(addFormView, typeof(ViewResult));
         }
+
+        [TestMethod]
+        public void Add_ReturnsCorrectView_True()
+        {
+            ClientController controller = new ClientController();
+            ActionResult addView = controller.Add("Jidenna", 1);
+            Assert.IsInstanceOfType(addView, typeof(RedirectToActionResult));
+        }
+
+
+
     }
 }
