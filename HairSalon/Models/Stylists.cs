@@ -4,13 +4,13 @@ using MySql.Data.MySqlClient;
 
 namespace HairSalon.Models
 {
-    public class Stylists
+    public class Stylist
     {
         private int _id;
         private string _name;
         private string _description;
 
-        public Stylists(int id, string name, string description)
+        public Stylist(int id, string name, string description)
         {
             _id = id;
             _name = name;
