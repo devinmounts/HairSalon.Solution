@@ -12,7 +12,8 @@ namespace HairSalon.Controllers
         [HttpGet("/stylist/all")]
         public ActionResult All()
         {
-            return View();
+            List<Stylist> allStylists = Stylist.GetAll();
+            return View(allStylists);
         }
 
         [HttpGet("/stylist/add")]

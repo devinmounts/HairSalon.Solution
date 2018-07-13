@@ -1,7 +1,6 @@
 ﻿@{
     Layout = "_Layout";
 }
-
 <div class="container" id="add-container">
     <h1>Enter a new Client</h1>
     <form class="form" action="/client/add" method="post">
@@ -12,9 +11,9 @@
         <div>
             <label for="stylist">Choose a Stylist</label>
             <select class="form-group" name="stylist">
-                @foreach(var stylist in Model)
+                @foreach (var stylist in Model)
                 {
-                <option value="@stylist.GetId()">@stylist.GetName()</option>
+                    <option value="@stylist.GetId()">@stylist.GetName()</option>
                 }
             </select>
         </div>

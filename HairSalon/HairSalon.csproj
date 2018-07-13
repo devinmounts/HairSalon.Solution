@@ -36,11 +36,15 @@
     <Content Remove="wwwroot\images\afro-beautiful-curly-157920.jpg" />
     <Content Remove="wwwroot\css\site.css" />
     <Content Remove="Views\_ViewStart.cshtml" />
+    <Content Remove="wwwroot\images\accessories-adult-attractive-935952.jpg" />
+    <Content Remove="wwwroot\images\adult-barber-barbershop-897253.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Shared\_Layout.cshtml" />
-    <None Include="wwwroot\images\afro-beautiful-curly-157920.jpg" />
-    <None Include="wwwroot\css\site.css" />
+    <None Include="wwwroot\images\hair01.jpg" />
+    <None Include="wwwroot\css\styles.css" />
+    <None Include="wwwroot\images\hair02.jpg" />
+    <None Include="wwwroot\images\hair03.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\ViewStart.cs" />

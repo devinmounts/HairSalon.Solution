@@ -20,8 +20,8 @@ namespace HairSalon.Controllers
         [HttpGet("/client/add")]
         public ActionResult AddForm()
         {
-            
-            return View();
+            List<Stylist> allStylists = Stylist.GetAll();
+            return View(allStylists);
         }
 
         [HttpPost("/client/add")]

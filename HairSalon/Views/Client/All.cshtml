@@ -1,23 +1,25 @@
 ﻿@{
     Layout = "_Layout";
 }
-
-<div class="container" id="add-container">
-    <h1>Enter a new Client</h1>
-    <form class="form" action="/client/add" method="post">
-        <div class="form-group">
-            <label for="name">Enter the name of Client</label>
-            <input type="text" name="name">
+<div class='container' id="client-container">
+    <h1>All Clients</h1>
+    <div class="row titles">
+        <div class="col-md-5">
+            <h4>Client Name</h4>
         </div>
-        <div>
-            <label for="stylist">Choose a Stylist</label>
-            <select class="form-group" name="stylist">
-                @foreach(var stylist in Model)
-                {
-                <option value="@stylist.GetId()">@stylist.GetName()</option>
-                }
-            </select>
+        <div class="col-md-3">
+            <h4>Stylist Id</h4>
         </div>
-        <button type="submit" class="btn btn-primary" name="button">Add New Food</button>
-    </form>
+    </div>
+    @foreach (var client in Model)
+    {
+        <div class="row data">
+            <div class="col-md-5">
+                <p class="name">@client.GetName()</p>
+            </div>
+            <div class="col-md-3">
+                <p>@client.GetStylistId()</p>
+            </div>
+        </div>
+    }
 </div>

@@ -10,22 +10,24 @@
         <div class="col-md-3">
             <h4>Stylist Id</h4>
         </div>
-    </div>
-    @foreach(var stylist in Model)
-    {
-    <div class="row data">
-        <div class="col-md-5">
-            <p class="name">@stylist.GetName()</p>
-        </div>
         <div class="col-md-3">
-            <p>@stylist.GetId()</p>
-        </div>
-        <div class="col-md-2">
-            <p>Clients</p>
-                <ul>
-                    <li>@Model.GetClients()</li>
-                </ul>
+            <h4>Clients</h4>
         </div>
     </div>
+    @foreach (var stylist in Model)
+    {
+        <div class="row data">
+            <div class="col-md-5">
+                <p class="name">@stylist.GetName()</p>
+            </div>
+            <div class="col-md-3">
+                <p>@stylist.GetId()</p>
+            </div>
+            <div class="col-md-2">
+                <ul>
+                    @*<li>@Model.GetClients()</li>*@
+                </ul>
+            </div>
+        </div>
     }
 </div>

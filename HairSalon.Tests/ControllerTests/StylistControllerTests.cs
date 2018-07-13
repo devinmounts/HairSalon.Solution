@@ -13,6 +13,7 @@ namespace HairSalon.Tests.ControllerTests
         public void Dispose()
         {
             Client.DeleteAll();
+            Stylist.DeleteAll();
         }
 
         [TestMethod]

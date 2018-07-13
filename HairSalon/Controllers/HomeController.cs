@@ -8,7 +8,7 @@ namespace HairSalon.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: /<controller>/
+        [HttpGet("/")]
         public ActionResult Index()
         {
             return View();
