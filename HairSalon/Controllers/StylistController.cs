@@ -3,17 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using HairSalon.Models;
 
 namespace HairSalon.Controllers
 {
     public class StylistController : Controller
     {
-        // GET: /<controller>/
-        public IActionResult Index()
+        [HttpGet("/stylist/all")]
+        public ActionResult All()
         {
             return View();
+        }
+
+        [HttpGet("/stylist/add")]
+        public ActionResult AddForm()
+        {
+            List<Stylist> allStylists = Stylist.GetAll();
+            return View(allStylists);
+        }
+
+        [HttpPost("/stylist/add")]
+        public ActionResult Add(string name, string details)
+        {
+            int id = 0;
+            Stylist newStylist = new Stylist(id, name, details);
+            newStylist.Save();
+            return RedirectToAction("All");
         }
     }
 }

@@ -13,8 +13,8 @@ namespace HairSalon.Controllers
         [HttpGet("/client/all")]
         public ActionResult All()
         {
-            List<Client> result = Client.GetAll();
-            return View(result);
+            List<Client> allClients = Client.GetAll();
+            return View(allClients);
         }
 
         [HttpGet("/client/add")]
