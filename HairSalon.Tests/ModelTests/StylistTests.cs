@@ -36,5 +36,6 @@ namespace HairSalon.Tests
 
             Assert.AreEqual("Works Monday", newStylist.GetDescription());
         }
+
     }
 }
