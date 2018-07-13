@@ -75,12 +75,19 @@ namespace HairSalon.Models
             }
         }
 
+        public override int GetHashCode()
+        {
+            return this.GetName().GetHashCode();
+        }
+
         public void Save()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO clients (id, name, stylist_id) VALUES (@thisId, @thisName, @thisStylist_Id;";
+            cmd.CommandText = @"INSERT INTO clients (id, name, stylist_id) VALUES (@thisId, @thisName, @thisStylist_Id);";
+            //cmd.CommandText = @"INSERT INTO `clients` (`id`, `name`, `stylist_id`) VALUES (@thisId, @thisName, @thisStylist_Id);";
+
 
             MySqlParameter id = new MySqlParameter();
             id.ParameterName = "@thisId";
@@ -99,6 +106,23 @@ namespace HairSalon.Models
 
             cmd.ExecuteNonQuery();
             _id = (int)cmd.LastInsertedId;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public static void DeleteAll()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"DELETE FROM clients;";
+
+            cmd.ExecuteNonQuery();
 
             conn.Close();
             if (conn != null)
