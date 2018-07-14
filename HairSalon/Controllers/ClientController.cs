@@ -14,11 +14,13 @@ namespace HairSalon.Controllers
         [HttpGet("/client/all")]
         public ActionResult All()
         {
-            dynamic mymodel = new ExpandoObject();
+            //MergeModel newMerge = new MergeModel();
+            //model.Client = new Client();
+            //model.Stylist = new Stylist();
             List<Client> allClients = Client.GetAll();
-            List<Stylist> allStylists = Stylist.GetAll();
+            //List<Stylist> allStylists = Stylist.GetAll();
            
-            return View(mymodel);
+            return View(allClients);
         }
 
         [HttpGet("/client/add")]
