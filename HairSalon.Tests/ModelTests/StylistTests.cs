@@ -85,19 +85,17 @@ namespace HairSalon.Tests
         }
 
         [TestMethod]
-        public void Find_FindsIdOfObject_Id()
+        public void Find_FindsStylistInDatabase_Stylist()
         {
-            Stylist newStylist = new Stylist(1, "Jidenna", "Works Monday");
-            newStylist.Save();
-
-            Stylist savedStylist = Stylist.Find(1);
-
-            int result = savedStylist.GetId();
-            int testId = newStylist.GetId();
-
-            Assert.AreEqual(testId, result);
+            
+            Stylist testStylist = new Stylist(1, "Jidenna", "Works Monday");
+            testStylist.Save();
 
 
+            Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+           
+            Assert.AreEqual(testStylist, foundStylist);
         }
     }
 }
