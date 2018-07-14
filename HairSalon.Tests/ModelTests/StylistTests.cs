@@ -106,12 +106,13 @@ namespace HairSalon.Tests
             testStylist.Save();
             Client testClient = new Client(1, "Donna", 1);
             testClient.Save();
+            List<Client> testList = new List<Client> { testClient };
 
 
-            List<Client> stylistClients = Stylist.
+            List<Client> stylistClients = testStylist.FindClients();
 
 
-            Assert.AreEqual(testStylist, foundStylist);
+            CollectionAssert.AreEqual(testList, stylistClients);
         }
     }
 }
