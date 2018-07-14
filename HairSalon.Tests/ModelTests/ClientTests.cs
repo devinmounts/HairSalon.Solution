@@ -96,8 +96,22 @@ namespace HairSalon.Tests
             int testId = newClient.GetId();
 
             Assert.AreEqual(testId, result);
+        }
+
+        [TestMethod]
+        public void FindClientStylist_FindsClientStylistInDatabase_Stylist()
+        {
+
+            Stylist testStylist = new Stylist(1, "Jidenna", "Works Monday");
+            testStylist.Save();
+            Client testClient = new Client(1, "Donna", 1);
+            testClient.Save();
 
 
+            Stylist clientStylist = testClient.FindStylist();
+
+
+            Assert.AreEqual(testStylist, clientStylist);
         }
     }
 }
