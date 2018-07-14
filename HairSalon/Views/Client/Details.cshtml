@@ -8,18 +8,14 @@
             <h4>Stylist Name</h4>
         </div>
         <div class="col-md-3">
-            <h4>Stylist Id</h4>
+            <h4>Details</h4>
         </div>
     </div>
-    @foreach (var stylist in Model.GetStylist())
-    {
     <div class="row data">
         <div class="col-md-5">
-            <p class="name">@stylist.Name</p>
+            <p class="name">@Model.FindStylist().GetName()</p>
         </div>
-        <div class="col-md-3">
-            <p>@stylist.Id</p>
+        <div class="col-md-5">
+            <p class="name">@Model.FindStylist().GetDetails()</p>
         </div>
     </div>
-    }
-</div>

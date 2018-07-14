@@ -183,5 +183,37 @@ namespace HairSalon.Models
             return newStylist;
         }
 
+        public List<Client> FindClients()
+        {
+            List<Client> stylistClients  = new List<Client> { };
+
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+
+            MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT * FROM clients where stylist_id = " + this._id + " ;";
+            MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            //MySqlParameter searchId = new MySqlParameter();
+            //searchId.ParameterName = "@thisId";
+            //searchId.Value = this._id;
+            //cmd.Parameters.Add(searchId);
+
+            while (rdr.Read())
+            {
+                int Id = rdr.GetInt32(0);
+                string Name = rdr.GetString(1);
+                int StylistId = rdr.GetInt32(2);
+                Client foundClient = new Client(Id, Name, StylistId);
+                stylistClients.Add(foundClient);
+            }
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+            return stylistClients;
+        }
+
     }
 }

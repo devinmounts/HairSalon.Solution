@@ -97,6 +97,22 @@ namespace HairSalon.Tests
            
             Assert.AreEqual(testStylist, foundStylist);
         }
+
+        [TestMethod]
+        public void FindStylistClients_FindsStylistClientsInDatabase_List()
+        {
+
+            Stylist testStylist = new Stylist(1, "Jidenna", "Works Monday");
+            testStylist.Save();
+            Client testClient = new Client(1, "Donna", 1);
+            testClient.Save();
+
+
+            List<Client> stylistClients = Stylist.
+
+
+            Assert.AreEqual(testStylist, foundStylist);
+        }
     }
 }
 

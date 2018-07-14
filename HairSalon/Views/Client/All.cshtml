@@ -8,7 +8,7 @@
             <h4>Client Name</h4>
         </div>
         <div class="col-md-3">
-            <h4>Stylist Id</h4>
+            <h4>View Details</h4>
         </div>
     </div>
     @foreach (var client in Model)
@@ -18,7 +18,7 @@
                 <p class="name">@client.GetName()</p>
             </div>
             <div class="col-md-3">
-                <p>@client.GetStylistId()</p>
+                <p><a class="btn btn-primary" href="/client/all/@client.GetId()/details">Details</a></p>
             </div>
         </div>
     }

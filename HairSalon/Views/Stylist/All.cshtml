@@ -11,7 +11,7 @@
             <h4>Stylist Id</h4>
         </div>
         <div class="col-md-3">
-            <h4>Clients</h4>
+            <h4></h4>
         </div>
     </div>
     @foreach (var stylist in Model)
@@ -25,7 +25,7 @@
             </div>
             <div class="col-md-2">
                 <ul>
-                    @*<li>@Model.GetClients()</li>*@
+                    <p><a class="btn btn-danger" href="/stylist/all/@stylist.GetId()/details">Details</a></p>
                 </ul>
             </div>
         </div>

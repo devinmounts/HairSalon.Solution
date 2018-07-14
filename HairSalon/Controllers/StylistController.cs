@@ -32,7 +32,7 @@ namespace HairSalon.Controllers
             return RedirectToAction("All");
         }
 
-        [HttpGet("/stylist/all/{id}/update")]
+        [HttpGet("/stylist/all/{id}/details")]
         public ActionResult Details(int id)
         {
             Stylist thisStylist = Stylist.Find(id);

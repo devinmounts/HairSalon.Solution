@@ -5,14 +5,14 @@
     <h1>@Model.GetName()</h1>
     <div class="row titles">
         <div class="col-md-5">
-            <h4>Client Name</h4>
+            <h4>Clients</h4>
         </div>
     </div>
-    @foreach (var client in Model.GetClients())
+    @foreach (var client in Model.FindClients())
     {
     <div class="row data">
         <div class="col-md-5">
-            <p class="name">@client.Name</p>
+            <p class="name">@client.GetName()</p>
         </div>
     </div>
     }

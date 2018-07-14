@@ -31,6 +31,7 @@
     <None Remove="README.md" />
     <None Remove="Views\Home\Index.html" />
     <None Remove="devin_mounts.sql" />
+    <None Remove="wwwroot\images\hair01.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Views\Shared\_Layout.cshtml" />
@@ -40,14 +41,15 @@
     <Content Remove="wwwroot\images\accessories-adult-attractive-935952.jpg" />
     <Content Remove="wwwroot\images\adult-barber-barbershop-897253.jpg" />
     <Content Remove="wwwroot\images\background-black-close-up-952670.jpg" />
+    <Content Remove="wwwroot\images\administration-adult-barber-668196.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Shared\_Layout.cshtml" />
-    <None Include="wwwroot\images\hair01.jpg" />
     <None Include="wwwroot\css\styles.css" />
-    <None Include="wwwroot\images\hair02.jpg" />
-    <None Include="wwwroot\images\hair03.jpg" />
     <None Include="wwwroot\images\background.jpg" />
+    <None Include="wwwroot\images\salon01.jpg" />
+    <None Include="wwwroot\images\salon02.jpg" />
+    <None Include="wwwroot\images\salon03.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\ViewStart.cs" />
