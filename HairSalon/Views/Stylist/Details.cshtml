@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="container" id="stylist-container">
+    <h1>@Model.GetName()</h1>
+    <div class="row titles">
+        <div class="col-md-5">
+            <h4>Client Name</h4>
+        </div>
+    </div>
+    @foreach (var client in Model.GetClients())
+    {
+    <div class="row data">
+        <div class="col-md-5">
+            <p class="name">@client.Name</p>
+        </div>
+    </div>
+    }
+</div>
