@@ -39,5 +39,11 @@ namespace HairSalon.Controllers
             return RedirectToAction("All");
         }
 
+        [HttpGet("/client/all/{id}/details")]
+        public ActionResult Details(int id)
+        {
+            Client thisClient = Client.Find(id);
+            return View("Details", thisClient);
+        }
     }
 }
