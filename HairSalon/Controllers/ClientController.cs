@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HairSalon.Models;
+using System.Dynamic;
 
 
 namespace HairSalon.Controllers
@@ -13,8 +14,11 @@ namespace HairSalon.Controllers
         [HttpGet("/client/all")]
         public ActionResult All()
         {
+            dynamic mymodel = new ExpandoObject();
             List<Client> allClients = Client.GetAll();
-            return View(allClients);
+            List<Stylist> allStylists = Stylist.GetAll();
+           
+            return View(mymodel);
         }
 
         [HttpGet("/client/add")]

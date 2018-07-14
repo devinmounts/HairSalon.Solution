@@ -11,14 +11,14 @@
             <h4>Stylist Id</h4>
         </div>
     </div>
-    @foreach (var client in Model)
+    @foreach (var client in Model.Client)
     {
         <div class="row data">
             <div class="col-md-5">
                 <p class="name">@client.GetName()</p>
             </div>
             <div class="col-md-3">
-                <p>@client.GetStylistId()</p>            
+                <p>@client.GetStylistId()</p>
             </div>
         </div>
     }

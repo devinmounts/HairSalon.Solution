@@ -187,7 +187,7 @@ namespace HairSalon.Models
         }
 
 
-        public static Stylist Find(int id)
+        public static Stylist FindStylist(int id)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
@@ -203,12 +203,12 @@ namespace HairSalon.Models
 
             int Id = 0;
             string Name = String.Empty;
-            int StylistId = 0;
+            string Details = String.Empty;
             while(rdr.Read())
             {
                 Id = rdr.GetInt32(0);
                 Name = rdr.GetString(1);
-                Details = rdr.GetInt32(2);
+                Details = rdr.GetString(2);
             }
 
             Stylist foundStylist = new Stylist(Id, Name, Details);
