@@ -2,19 +2,22 @@
     Layout = "_Layout";
 }
 <div class='container' id="stylist-container">
-    <h1>All Categories</h1>
-    <div class="row titles">
-        <div class="col-md-5">
-            <h4>Stylist Name</h4>
+    <h1>All Stylists</h1>
+    <form action="/stylist/all/delete" method="post">
+        <button class="btn btn-warning" type="submit">Delete All Stylists</button>
+    </form>
+        <div class="row titles">
+            <div class="col-md-5">
+                <h4>Stylist Name</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>Stylist Id</h4>
+            </div>
+            <div class="col-md-3">
+                <h4></h4>
+            </div>
         </div>
-        <div class="col-md-3">
-            <h4>Stylist Id</h4>
-        </div>
-        <div class="col-md-3">
-            <h4></h4>
-        </div>
-    </div>
-    @foreach (var stylist in Model)
+        @foreach (var stylist in Model)
     {
         <div class="row data">
             <div class="col-md-5">
@@ -29,5 +32,6 @@
                 </ul>
             </div>
         </div>
-    }
+}
+
 </div>

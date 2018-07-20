@@ -36,7 +36,7 @@ namespace HairSalon.Controllers
         public ActionResult DeleteAll()
         {
             Stylist.DeleteAll();
-            return RedirectToAction("Index", "Home")
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpGet("/stylist/all/{id}/details")]
@@ -44,6 +44,14 @@ namespace HairSalon.Controllers
         {
             Stylist thisStylist = Stylist.Find(id);
             return View("Details", thisStylist);
+        }
+
+        [HttpPost("/stylist/all/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            Stylist selectedStylist = Stylist.Find(id);
+            selectedStylist.DeleteStylist();
+            return RedirectToAction("All");
         }
     }
 }
