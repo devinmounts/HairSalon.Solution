@@ -2,23 +2,16 @@
     Layout = "_Layout";
 }
 <div class="container" id="client-container">
-    <h1>All Clients</h1>
     <div class="row titles">
         <div class="col-md-5">
-            <h4>Client Name</h4>
-        </div>
-        <div class="col-md-3">
-            <h4>View Details</h4>
+            <h1>All Clients</h1>
         </div>
     </div>
     @foreach (var client in Model)
     {
         <div class="row data">
             <div class="col-md-5">
-                <p class="name">@client.GetName()</p>
-            </div>
-            <div class="col-md-3">
-                <p><a class="btn btn-primary" href="/client/all/@client.GetId()/details">Details</a></p>
+                <h3 class="name"><a href="/client/all/@client.GetId()/details">@client.GetName()</a></h3>
             </div>
         </div>
     }
