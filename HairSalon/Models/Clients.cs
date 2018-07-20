@@ -130,17 +130,17 @@ namespace HairSalon.Models
             }
         }
 
-        public static void DeleteClient(int id)
+        public void DeleteClient()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"DELETE * FROM clients WHERE id = @thisId;";
+            cmd.CommandText = @"DELETE FROM clients WHERE id = @thisId;";
 
             MySqlParameter searchId = new MySqlParameter();
             searchId.ParameterName = "@thisId";
-            searchId.Value = id;
+            searchId.Value = _id;
             cmd.Parameters.Add(searchId);
 
             cmd.ExecuteNonQuery();
@@ -186,6 +186,33 @@ namespace HairSalon.Models
             return foundClient;
         }
 
+        public void Update(string newName)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @thisId;";
+
+            MySqlParameter thisId = new MySqlParameter();
+            thisId.ParameterName = "@thisId";
+            thisId.Value = _id;
+            cmd.Parameters.Add(thisId);
+
+            MySqlParameter name = new MySqlParameter();
+            name.ParameterName = "@newName";
+            name.Value = newName;
+            cmd.Parameters.Add(name);
+
+            cmd.ExecuteNonQuery();
+            _name = newName;
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+        }
 
         public Stylist FindStylist()
         {

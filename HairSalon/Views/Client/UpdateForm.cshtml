@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "_Layout";
+}
+<div class="container" id="client-container"
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>@Model.GetName()</h2>
+            <hr />
+            <form action="/client/all/@Model.GetId()/update" method="post">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" value="@Model.GetName()" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Edit</button>
+            </form>
+            <form class="inline-form-button" action="/client/all/@Model.GetId()/delete" method="post">
+                <button class="btn btn-warning" type="submit">Delete Stylists</button>
+            </form>
+            <a href="/" class="btn btn-primary">Return to Home</a>
+        </div>
+    </div>
+</div>

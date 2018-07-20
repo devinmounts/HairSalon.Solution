@@ -113,6 +113,53 @@ namespace HairSalon.Tests
 
             Assert.AreEqual(testStylist, clientStylist);
         }
+
+        [TestMethod]
+        public void DeleteAll_DeletesAllClientsInDatabase_ClientList()
+        {
+
+            Client testClient01 = new Client(1, "Jidenna", 2);
+            testClient01.Save();
+            Client testClient02 = new Client(2, "Salmon", 2);
+            testClient02.Save();
+
+            Client.DeleteAll();
+            List<Client> expectedList = new List<Client> { };
+            List<Client> resultList = Client.GetAll();
+
+
+
+            CollectionAssert.AreEqual(expectedList, resultList);
+        }
+
+        [TestMethod]
+        public void Delete_DeletesClientInDatabase_Client()
+        {
+
+            Client testClient01 = new Client(1, "Jidenna", 2);
+            testClient01.Save();
+            Client testClient02 = new Client(2, "Salmon", 4);
+            testClient02.Save();
+
+            testClient01.DeleteClient();
+            List<Client> expectedList = new List<Client> { testClient02 };
+            List<Client> resultList = Client.GetAll();
+
+
+
+            CollectionAssert.AreEqual(expectedList, resultList);
+        }
+
+        [TestMethod]
+        public void Update_UpdatesClientInDatabase_Client()
+        {
+            Client testClient01 = new Client(1, "Jidenna", "Works Monday");
+            testClient01.Save();
+
+            testClient01.Update("Jedenna", "Beautiful Hair");
+
+            Assert.AreEqual("Jedenna", testClient01.GetName());
+        }
     }
 }
 
