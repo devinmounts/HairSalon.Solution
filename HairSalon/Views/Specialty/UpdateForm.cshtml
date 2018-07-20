@@ -4,21 +4,26 @@
 <div class="container" id="stylist-container"
     <div class="row">
         <div class="col-sm-12">
-            <h2>@Model.GetName()</h2>
+            <h2>@Model["selectedSpecialty"].Description</h2>
             <hr />
-            <form action="/stylist/all/@Model.GetId()/update" method="post">
+            <form action="/specialty/all/@Model["selectedSpecialty"].Id/update" method="post">
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" name="name" value="@Model.GetName()" required>
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" value="@Model["selectedSpecialty"].Description" required>
                 </div>
-                <div class="form-group">
-                    <label for="name">Details:</label>
-                    <input type="text" name="details" value="@Model.GetDetails()" required>
+                <div>
+                    <label for="stylistId">Add a Specialist</label>
+                    <select class="form-group" name="stylistId">
+                        @foreach (var stylist in Model["allStylists"])
+    {
+                    <option value="@stylist.GetId()">@stylist.GetName()</option>
+}
+                    </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>
-            <form class="inline-form-button" action="/stylist/all/@Model.GetId()/delete" method="post">
-                <button class="btn btn-warning" type="submit">Delete Stylists</button>
+            <form class="inline-form-button" action="/specialty/all/@Model["selectedSpecialty"].Id/delete" method="post">
+                <button class="btn btn-warning" type="submit">Delete Specialty</button>
             </form>
             <a href="/" class="btn btn-primary">Return to Home</a>
         </div>

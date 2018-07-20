@@ -13,6 +13,7 @@
     <Folder Include="Views\Stylist\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\css\" />
+    <Folder Include="Views\Specialty\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />

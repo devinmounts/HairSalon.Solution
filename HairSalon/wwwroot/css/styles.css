@@ -36,19 +36,22 @@ textarea {
 
 #stylist-container,
 #client-container,
-#add-container {
+#add-container,
+#specialty-container {
     background: #ffffffe8;
     padding: 30px
 }
 
 #stylist-container h1,
 #client-container h1,
-#add-container h1 {
+#add-container h1,
+#specialty-container h1 {
     margin-bottom: 2rem
 }
 
 #stylist-container .col-md-2,
-#category-container .col-md-2 {
+#client-container .col-md-2,
+#specialty-container .col-md-2 {
     text-align: center
 }
 

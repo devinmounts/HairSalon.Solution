@@ -2,19 +2,18 @@
     Layout = "_Layout";
 }
 <div class="container" id="stylist-container">
-    <h1>@Model.GetName()</h1>
-    <h4>@Model.GetDetails()</h4>
-    <a class="btn btn-danger" href="/stylist/all/@Model.GetId()/update">Update Stylist</a>
+    <h1>Stylists who specialize in: @Model.Description</h1>
+    <a class="btn btn-success" href="/specialty/all/@Model.Id/update">Update Specialty</a>
     <div class="row titles">
         <div class="col-md-5">
-            <h4>Clients</h4>
+            <h4>Stylists</h4>
         </div>
     </div>
-    @foreach (var client in Model.FindClients())
+    @foreach (var stylist in Model.GetStylists())
     {
     <div class="row data">
         <div class="col-md-5">
-            <p class="name">@client.GetName()</p>
+            <p class="name">@stylist.GetName()</p>
         </div>
     </div>
     }

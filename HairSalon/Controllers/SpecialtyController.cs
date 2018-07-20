@@ -9,69 +9,71 @@ using System.Dynamic;
 
 namespace HairSalon.Controllers
 {
-    public class ClientController : Controller
+    public class SpecialtyController : Controller
     {
-        [HttpGet("/client/all")]
+        [HttpGet("/specialty/all")]
         public ActionResult All()
         {
-            List<Client> allClients = Client.GetAll();           
-            return View(allClients);
+            List<Specialty> allSpecialties = Specialty.GetAll();           
+            return View(allSpecialties);
         }
 
-        [HttpGet("/client/add")]
+        [HttpGet("/specialty/add")]
         public ActionResult AddForm()
         {
             List<Stylist> allStylists = Stylist.GetAll();
             return View(allStylists);
         }
 
-        [HttpPost("/client/add")]
-        public ActionResult Add(string name, int stylistId)
+        [HttpPost("/specialty/add")]
+        public ActionResult Add(string description)
         {
             int id = 0;
-            Client newClient = new Client(id, name, stylistId);
-            newClient.Save();
+            Specialty newSpecialty = new Specialty(description, id);
+            newSpecialty.Save();
             return RedirectToAction("All");
         }
 
-        [HttpGet("/client/all/{id}/details")]
+        [HttpGet("/specialty/all/{id}/details")]
         public ActionResult Details(int id)
         {
-            Client thisClient = Client.Find(id);
-            return View("Details", thisClient);
+            Specialty thisSpecialty = Specialty.Find(id);
+            return View("Details", thisSpecialty);
         }
 
-        [HttpPost("client/all/delete")]
+        [HttpPost("specialty/all/delete")]
         public ActionResult DeleteAll()
         {
-            Client.DeleteAll();
+            Specialty.DeleteAll();
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost("/client/all/{id}/delete")]
+        [HttpPost("/specialty/all/{id}/delete")]
         public ActionResult Delete(int id)
         {
-            Client selectedClient = Client.Find(id);
-            selectedClient.DeleteClient();
+            Specialty selectedSpecialty = Specialty.Find(id);
+            selectedSpecialty.DeleteSpecialty();
             return RedirectToAction("All");
         }
 
-        [HttpGet("client/all/{id}/update")]
+        [HttpGet("specialty/all/{id}/update")]
         public ActionResult UpdateForm(int id)
         {
             Dictionary<string, object> model = new Dictionary<string, object> { };
             List<Stylist> allStylists = Stylist.GetAll();
-            Client selectedClient = Client.Find(id);
+            Specialty selectedSpecialty = Specialty.Find(id);
             model.Add("allStylists", allStylists);
-            model.Add("selectedClient", selectedClient);
+            model.Add("selectedSpecialty", selectedSpecialty);
             return View(model);
         }
 
-        [HttpPost("client/all/{id}/update")]
-        public ActionResult Update(int id, string name, int stylistId)
+        [HttpPost("specialty/all/{id}/update")]
+        public ActionResult Update(int id, string description, int stylistId)
         {
-            Client selectedClient = Client.Find(id);
-            selectedClient.Update(name, stylistId);
+            Specialty selectedSpecialty = Specialty.Find(id);
+            selectedSpecialty.Update(description);
+            Stylist foundStylist = Stylist.Find(stylistId);
+            selectedSpecialty.AddStylist(foundStylist);
             return RedirectToAction("Details", new { id = id });
         }
     }
