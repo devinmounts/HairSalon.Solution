@@ -16,7 +16,10 @@
                     <select class="form-group" name="stylistId">
                         @foreach (var stylist in Model["allStylists"])
                         {
-                        <option value="@stylist.GetId()">@stylist.GetName()</option>
+                            if(!(Model["selectedSpecialty"].GetStylists().Contains(@stylist)))
+                            { 
+                                <option value="@stylist.GetId()">@stylist.GetName()</option>
+                            }
                         }
                     </select>
                 </div>

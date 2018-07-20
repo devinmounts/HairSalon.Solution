@@ -20,11 +20,14 @@
                     <select class="form-group" name="specialtyId">
                         @foreach (var specialty in Model["allSpecialties"])
                         {
-                        <option value="@specialty.Id">@specialty.Description</option>
+                            if(!(Model["selectedStylist"].GetSpecialties().Contains(@specialty)))
+                            {
+                                <option value="@specialty.Id">@specialty.Description</option>
+                            }
                         }
                     </select>
                 </div>
-                <button type="submit" class="btn btn-success">Edit</button>
+                <button type="submit" class="btn btn-success">Update</button>
             </form>
             <hr/>
             <form class="inline-form-button" action="/stylist/all/@Model["selectedStylist"].GetId()/delete" method="post">
