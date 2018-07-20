@@ -10,7 +10,7 @@ namespace HairSalon.Tests.ControllerTests
     [TestClass]
     public class StylisControllerTests : IDisposable
     {
-        public void FoodTests()
+        public void StylistTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=devin_mounts_test;";
         }

@@ -14,12 +14,7 @@ namespace HairSalon.Controllers
         [HttpGet("/client/all")]
         public ActionResult All()
         {
-            //MergeModel newMerge = new MergeModel();
-            //model.Client = new Client();
-            //model.Stylist = new Stylist();
-            List<Client> allClients = Client.GetAll();
-            //List<Stylist> allStylists = Stylist.GetAll();
-           
+            List<Client> allClients = Client.GetAll();           
             return View(allClients);
         }
 
@@ -44,6 +39,40 @@ namespace HairSalon.Controllers
         {
             Client thisClient = Client.Find(id);
             return View("Details", thisClient);
+        }
+
+        [HttpPost("client/all/delete")]
+        public ActionResult DeleteAll()
+        {
+            Client.DeleteAll();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost("/client/all/{id}/delete")]
+        public ActionResult Delete(int id)
+        {
+            Client selectedClient = Client.Find(id);
+            selectedClient.DeleteClient();
+            return RedirectToAction("All");
+        }
+
+        [HttpGet("client/all/{id}/update")]
+        public ActionResult UpdateForm(int id)
+        {
+            Dictionary<string, object> model = new Dictionary<string, object> { };
+            List<Stylist> allStylists = Stylist.GetAll();
+            Client selectedClient = Client.Find(id);
+            model.Add("allStylists", allStylists);
+            model.Add("selectedClient", selectedClient);
+            return View(model);
+        }
+
+        [HttpPost("client/all/{id}/update")]
+        public ActionResult Update(int id, string name, int stylistId)
+        {
+            Client selectedClient = Client.Find(id);
+            selectedClient.Update(name, stylistId);
+            return RedirectToAction("Details", new { id = id });
         }
     }
 }

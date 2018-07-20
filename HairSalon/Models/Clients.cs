@@ -186,12 +186,12 @@ namespace HairSalon.Models
             return foundClient;
         }
 
-        public void Update(string newName)
+        public void Update(string newName, int newStylistId)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"UPDATE clients SET name = @newName WHERE id = @thisId;";
+            cmd.CommandText = @"UPDATE clients SET name = @newName, stylist_Id = @newStylistId WHERE id = @thisId;";
 
             MySqlParameter thisId = new MySqlParameter();
             thisId.ParameterName = "@thisId";
@@ -202,6 +202,8 @@ namespace HairSalon.Models
             name.ParameterName = "@newName";
             name.Value = newName;
             cmd.Parameters.Add(name);
+
+            cmd.Parameters.AddWithValue("newStylistId", newStylistId);
 
             cmd.ExecuteNonQuery();
             _name = newName;
