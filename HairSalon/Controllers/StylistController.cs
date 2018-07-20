@@ -58,15 +58,22 @@ namespace HairSalon.Controllers
         [HttpGet("stylist/all/{id}/update")]
         public ActionResult UpdateForm(int id)
         {
+            Dictionary<string, object> model = new Dictionary<string, object> { };
+            List<Specialty> allSpecialties = Specialty.GetAll();
             Stylist selectedStylist = Stylist.Find(id);
-            return View(selectedStylist);
+            model.Add("allSpecialties", allSpecialties);
+            model.Add("selectedStylist", selectedStylist);
+            return View(model);
         }
 
         [HttpPost("stylist/all/{id}/update")]
-        public ActionResult Update(int id, string name, string details)
+        public ActionResult Update(int id, string name, string details, int specialtyId)
         {
             Stylist selectedStylist = Stylist.Find(id);
             selectedStylist.Update(name, details);
+
+            Specialty foundSpecialty = Specialty.Find(specialtyId);
+            selectedStylist.AddSpecialty(foundSpecialty);
             return RedirectToAction("Details", new { id = id });
         }
     }

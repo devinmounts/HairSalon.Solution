@@ -15,9 +15,9 @@
                     <label for="stylistId">Add a Specialist</label>
                     <select class="form-group" name="stylistId">
                         @foreach (var stylist in Model["allStylists"])
-    {
-                    <option value="@stylist.GetId()">@stylist.GetName()</option>
-}
+                        {
+                        <option value="@stylist.GetId()">@stylist.GetName()</option>
+                        }
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
