@@ -9,13 +9,22 @@
         <div class="col-md-5">
             <h4>Clients</h4>
         </div>
+        <div class="col-md-5">
+            <h4>Specialties</h4>
+        </div>
     </div>
-    @foreach (var client in Model.FindClients())
-    {
     <div class="row data">
+        @foreach (var client in Model.FindClients())
+        {
         <div class="col-md-5">
             <p class="name">@client.GetName()</p>
         </div>
+        }
+        @foreach (var specialty in Model.GetSpecialties())
+        {
+        <div class="col-md-5">
+            <p class="description">@specialty.Description</p>
+        </div>
+        }
     </div>
-    }
-</div>
+
