@@ -246,5 +246,71 @@ namespace HairSalon.Models
             return stylistClients;
         }
 
+        public void AddBook(Book newBook)
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"INSERT INTO catalog (book_id, author_id) VALUES (@BookId, @AuthorId);";
+
+            MySqlParameter book_id = new MySqlParameter();
+            book_id.ParameterName = "@BookId";
+            book_id.Value = newBook.Id;
+            cmd.Parameters.Add(book_id);
+
+            MySqlParameter author_id = new MySqlParameter();
+            author_id.ParameterName = "@AuthorId";
+            author_id.Value = Id;
+            cmd.Parameters.Add(author_id);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+        }
+
+        public List<Specialty> GetSpecialties()
+        {
+            MySqlConnection conn = DB.Connection();
+            conn.Open();
+            var cmd = conn.CreateCommand() as MySqlCommand;
+            cmd.CommandText = @"SELECT specialties.* FROM stylists
+                                JOIN stylists_specialties ON (stylists.id = stylists_specialties.stylist_id)
+                                JOIN specialties ON (stylists_specialties.specialty_id = specialties.id)
+                                WHERE stylists.id = @stylistId;";
+
+            MySqlParameter stylistIdParameter = new MySqlParameter();
+            stylistIdParameter.ParameterName = "@stylistId";
+            stylistIdParameter.Value = _id;
+            cmd.Parameters.Add(stylistIdParameter);
+
+            var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+            List<Specialty> specialties = new List<Specialty> { };
+
+            while (rdr.Read())
+            {
+                int specialtyId = rdr.GetInt32(0);
+                string specialtyDescription = rdr.GetString(1);
+                Specialty newSpecialty = new Specialty(specialtyDescription, specialtyId);
+                specialties.Add(newSpecialty);
+            }
+
+            conn.Close();
+            if (conn != null)
+            {
+                conn.Dispose();
+            }
+
+            return specialties;
+        }
+
+        public List<Specialty> GetAllSpecialties()
+        {
+            return Specialty.GetAll();
+        }
+
     }
 }
