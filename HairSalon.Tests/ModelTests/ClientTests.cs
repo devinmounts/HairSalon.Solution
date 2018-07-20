@@ -153,10 +153,10 @@ namespace HairSalon.Tests
         [TestMethod]
         public void Update_UpdatesClientInDatabase_Client()
         {
-            Client testClient01 = new Client(1, "Jidenna", "Works Monday");
+            Client testClient01 = new Client(1, "Jidenna", 3);
             testClient01.Save();
 
-            testClient01.Update("Jedenna", "Beautiful Hair");
+            testClient01.Update("Jedenna");
 
             Assert.AreEqual("Jedenna", testClient01.GetName());
         }
