@@ -246,22 +246,22 @@ namespace HairSalon.Models
             return stylistClients;
         }
 
-        public void AddBook(Book newBook)
+        public void AddSpecialty(Specialty newSpecialty)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO catalog (book_id, author_id) VALUES (@BookId, @AuthorId);";
+            cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
 
-            MySqlParameter book_id = new MySqlParameter();
-            book_id.ParameterName = "@BookId";
-            book_id.Value = newBook.Id;
-            cmd.Parameters.Add(book_id);
+            MySqlParameter stylist_id = new MySqlParameter();
+            stylist_id.ParameterName = "@StylistId";
+            stylist_id.Value = _id;
+            cmd.Parameters.Add(stylist_id);
 
-            MySqlParameter author_id = new MySqlParameter();
-            author_id.ParameterName = "@AuthorId";
-            author_id.Value = Id;
-            cmd.Parameters.Add(author_id);
+            MySqlParameter specialty_id = new MySqlParameter();
+            specialty_id.ParameterName = "@SpecialtyId";
+            specialty_id.Value = newSpecialty.Id;
+            cmd.Parameters.Add(specialty_id);
 
             cmd.ExecuteNonQuery();
             conn.Close();
