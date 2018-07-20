@@ -8,22 +8,22 @@ using HairSalon.Models;
 namespace HairSalon.Tests.ControllerTests
 {
     [TestClass]
-    public class ClientControllerTests : IDisposable
+    public class SpecialtyControllerTests : IDisposable
     {
-        public void ClientTests()
+        public void SpecialtyTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=devin_mounts_test;";
         }
 
         public void Dispose()
         {
-            Client.DeleteAll();
+            Specialty.DeleteAll();
         }
 
         [TestMethod]
         public void All_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult allView = controller.All();
             Assert.IsInstanceOfType(allView, typeof(ViewResult));
         }
@@ -31,7 +31,7 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void AddForm_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult addFormView = controller.AddForm();
             Assert.IsInstanceOfType(addFormView, typeof(ViewResult));
         }
@@ -39,15 +39,15 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void Add_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
-            ActionResult addView = controller.Add("Jidenna", 1);
+            SpecialtyController controller = new SpecialtyController();
+            ActionResult addView = controller.Add("description");
             Assert.IsInstanceOfType(addView, typeof(RedirectToActionResult));
         }
 
         [TestMethod]
         public void Details_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
+            SpecialtyController controller = new SpecialtyController();
             ActionResult detailsView = controller.Details(1);
             Assert.IsInstanceOfType(detailsView, typeof(ViewResult));
         }
@@ -55,7 +55,7 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void DeleteAll_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
+            StylistController controller = new StylistController();
             ActionResult deleteAllView = controller.DeleteAll();
             Assert.IsInstanceOfType(deleteAllView, typeof(RedirectToActionResult));
         }
@@ -63,7 +63,7 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void Delete_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
+            StylistController controller = new StylistController();
             ActionResult deleteView = controller.DeleteAll();
             Assert.IsInstanceOfType(deleteView, typeof(RedirectToActionResult));
         }
@@ -71,7 +71,7 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void UpdateForm_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
+            StylistController controller = new StylistController();
             ActionResult updateView = controller.UpdateForm(1);
             Assert.IsInstanceOfType(updateView, typeof(ViewResult));
         }
@@ -79,8 +79,8 @@ namespace HairSalon.Tests.ControllerTests
         [TestMethod]
         public void Update_ReturnsCorrectView_True()
         {
-            ClientController controller = new ClientController();
-            ActionResult updateView = controller.Update(1, "name", 1);
+            StylistController controller = new StylistController();
+            ActionResult updateView = controller.Update(1, "name", "details");
             Assert.IsInstanceOfType(updateView, typeof(RedirectToActionResult));
         }
       
