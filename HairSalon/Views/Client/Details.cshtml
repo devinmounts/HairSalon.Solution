@@ -4,7 +4,7 @@
 <div class="container" id="client-container">
     <h1>Client Name</h1>
     <h3>@Model.GetName()</h3>
-    <a class="btn btn-danger" href="/client/all/@Model.GetId()/update">Update Client</a>
+    <a class="btn btn-primary" href="/client/all/@Model.GetId()/update">Update Client</a>
     <div class="row titles">
         <div class="col-md-5">
             <h4>Stylist Name</h4>
@@ -15,7 +15,7 @@
     </div>
     <div class="row data">
         <div class="col-md-5">
-            <p class="name">@Model.FindStylist().GetName()</p>
+            <p class="name"><a href="/stylist/all/@Model.FindStylist().GetId()/details">@Model.FindStylist().GetName()</a></p>
         </div>
         <div class="col-md-5">
             <p class="name">@Model.FindStylist().GetDetails()</p>

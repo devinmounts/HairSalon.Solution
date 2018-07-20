@@ -4,7 +4,7 @@
 <div class="container" id="client-container"
     <div class="row">
         <div class="col-sm-12">
-            <h2>@Model["selectedClient"].GetName()</h2>
+            <h2>Udpate Client: @Model["selectedClient"].GetName()</h2>
             <hr />
             <form action="/client/all/@Model["selectedClient"].GetId()/update" method="post">
                 <div class="form-group">
@@ -22,10 +22,12 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Edit</button>
             </form>
+            <hr/>
             <form class="inline-form-button" action="/client/all/@Model["selectedClient"].GetId()/delete" method="post">
-                <button class="btn btn-warning" type="submit">Delete Client</button>
+                <button class="btn btn-danger" type="submit">Delete Client</button>
             </form>
-            <a href="/" class="btn btn-primary">Return to Home</a>
+            <hr />
+            <a href="/" >Return to Home</a>
         </div>
     </div>
 </div>

@@ -4,7 +4,7 @@
 <div class="container" id="stylist-container"
     <div class="row">
         <div class="col-sm-12">
-            <h2>@Model["selectedStylist"].GetName()</h2>
+            <h2><a href="/stylist/all/@Model["selectedStylist"].GetId()/details">@Model["selectedStylist"].GetName()</a></h2>
             <hr />
             <form action="/stylist/all/@Model["selectedStylist"].GetId()/update" method="post">
                 <div class="form-group">
@@ -24,12 +24,12 @@
                         }
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-success">Edit</button>
             </form>
+            <hr/>
             <form class="inline-form-button" action="/stylist/all/@Model["selectedStylist"].GetId()/delete" method="post">
-                <button class="btn btn-warning" type="submit">Delete Stylists</button>
+                <button class="btn btn-danger" type="submit">Delete Stylist</button>
             </form>
-            <a href="/" class="btn btn-primary">Return to Home</a>
         </div>
     </div>
 </div>
