@@ -89,17 +89,17 @@ namespace HairSalon.Models
 
             MySqlParameter id = new MySqlParameter();
             id.ParameterName = "@thisId";
-            id.Value = this._id;
+            id.Value = _id;
             cmd.Parameters.Add(id);
 
             MySqlParameter name = new MySqlParameter();
             name.ParameterName = "@thisName";
-            name.Value = this._name;
+            name.Value =_name;
             cmd.Parameters.Add(name);
 
             MySqlParameter stylist_id = new MySqlParameter();
             stylist_id.ParameterName = "@thisStylist_Id";
-            stylist_id.Value = this._stylistId;
+            stylist_id.Value = _stylistId;
             cmd.Parameters.Add(stylist_id);
 
             cmd.ExecuteNonQuery();

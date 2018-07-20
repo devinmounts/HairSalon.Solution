@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using MySql.Data.MySqlClient;
+
 namespace HairSalon.Models
 {
     public class Specialty
     {
-        public int Id { get; set}
-        public string Description { get; set};
+        public int Id { get; set; }
+        public string Description { get; set; }
 
-   
- 
+
+
         public Specialty(string description, int id)
         {
             Id = id;
@@ -35,20 +38,23 @@ namespace HairSalon.Models
             }
         }
 
-
-
         public void Save()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             var cmd = conn.CreateCommand() as MySqlCommand;
-            cmd.CommandText = @"INSERT INTO specialties (description) VALUES (@Description);";
+            cmd.CommandText = @"INSERT INTO specialties (id, description) VALUES (@ThisId, @Description);";
 
             MySqlParameter description = new MySqlParameter();
             description.ParameterName = "@Description";
-            description.Value = Name;
+            description.Value = Description;
             cmd.Parameters.Add(description);
+
+            MySqlParameter id = new MySqlParameter();
+            id.ParameterName = "@ThisId";
+            id.Value = Id;
+            cmd.Parameters.Add(id);
 
             cmd.ExecuteNonQuery();
             Id = (int)cmd.LastInsertedId;
@@ -63,30 +69,25 @@ namespace HairSalon.Models
         public static List<Specialty> GetAll()
         {
             List<Specialty> allSpecialties = new List<Specialty> { };
+
             MySqlConnection conn = DB.Connection();
             conn.Open();
 
             MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
             cmd.CommandText = @"SELECT * FROM specialties;";
-
             MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-
             while (rdr.Read())
             {
-                int id = rdr.GetInt32(0);
-                string description = rdr.GetString(1);
-
-                Specialty newSpecialty = new Specialty(name, id);
-                allSpecialtys.Add(newSpecialty);
+                int Id = rdr.GetInt32(0);
+                string Description = rdr.GetString(1);
+                Specialty newSpecialty = new Specialty(Description, Id);
+                allSpecialties.Add(newSpecialty);
             }
-
             conn.Close();
-
             if (conn != null)
             {
                 conn.Dispose();
             }
-
             return allSpecialties;
         }
 
@@ -114,7 +115,7 @@ namespace HairSalon.Models
                 description = rdr.GetString(1);
             }
 
-            Specialty foundSpecialty = new Specialty(descriptoin, specialtyId);
+            Specialty foundSpecialty = new Specialty(description, specialtyId);
 
             conn.Close();
             if (conn != null)
@@ -125,7 +126,7 @@ namespace HairSalon.Models
             return foundSpecialty;
         }
 
-        public void Edit(string newDescription)
+        public void Update(string newDescription)
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();
@@ -145,7 +146,7 @@ namespace HairSalon.Models
 
             cmd.ExecuteNonQuery();
 
-            Name = newName;
+            Description = newDescription;
 
 
             conn.Close();
@@ -155,7 +156,7 @@ namespace HairSalon.Models
             }
         }
 
-        public void Delete()
+        public void DeleteSpecialty()
         {
             MySqlConnection conn = DB.Connection();
             conn.Open();

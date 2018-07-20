@@ -13,7 +13,7 @@ namespace HairSalon.Tests
         {
             Client.DeleteAll();
         }
-        public void FoodTests()
+        public void ClientsTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=devin_mounts_test;";
         }
@@ -156,7 +156,7 @@ namespace HairSalon.Tests
             Client testClient01 = new Client(1, "Jidenna", 3);
             testClient01.Save();
 
-            testClient01.Update("Jedenna");
+            testClient01.Update("Jedenna", 3);
 
             Assert.AreEqual("Jedenna", testClient01.GetName());
         }

@@ -13,7 +13,7 @@ namespace HairSalon.Tests
         {
             Stylist.DeleteAll();
         }
-        public void FoodTests()
+        public void StylistTests()
         {
             DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=devin_mounts_test;";
         }
