@@ -43,6 +43,23 @@ USING query
 * Initializes git and git pair in project directory
 * Installs packages with `dotnet restore` in test directory and project directory
 
+##Specs
+
+* Program allows user to see a list of all our stylists.
+* Program allows user to select a stylist, see their details, and see a list of all clients that belong to that stylist.
+* Program allows user to add new stylists to database.
+* Program allows user to add new clients to a specific stylist.
+* Program allows user to delete stylists (all and single).
+* Program allows user to delete clients (all and single).
+* Program allows user to view clients (all and single).
+* Program allows user to edit a stylist.
+* Program allows user to edit ALL of the information for a client.
+* Program allows user to add a specialty and view all specialties that have been added.
+* Program allows user to add a specialty to a stylist.
+* Program allows user to click on a specialty and see all of the stylists that have that specialty.
+* Program allows user to see the stylist's specialties on the stylist's details page.
+* Program allows user to be able to add a stylist to a specialty.
+
 ## Contribution Requirements
 
 1. Clone the repo
