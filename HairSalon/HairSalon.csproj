@@ -51,7 +51,6 @@
     <None Include="wwwroot\images\salon01.jpg" />
     <None Include="wwwroot\images\salon02.jpg" />
     <None Include="wwwroot\images\salon03.jpg" />
-    <None Include="wwwroot\images\cover.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\ViewStart.cs" />
