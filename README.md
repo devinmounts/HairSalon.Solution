@@ -7,7 +7,7 @@
 ## A web application that allows employees at a hair salon to create and view stylist to client relationships.
 
 ## Splash
-![Welcome Page](../cover.png)
+![Welcome Page](/cover.png)
 
 ## Setup
 
