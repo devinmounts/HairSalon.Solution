@@ -21,10 +21,20 @@
 1. Follow instructions for Downloading, Configuring ports and Runing MAMP :https://www.learnhowtoprogram.com/c/database-basics-ee7c9fd3-fcd9-4fff-8b1d-5ff7bfcbf8f0/introducing-and-installing-mamp
 1. Enter following command to open MySql connection in terminal : Applications/MAMP/Library/bin/mysql --host=localhost -uroot -proot
 1. In MySql:
-    1.CREATE DATABASE db_name;
-    1.USE db_name;
-    1.CREATE TABLE `db_name`.`stylists` ( `id` INT(11) NOT NULL AUTO_INCREMENT ,`name` VARCHAR(255) NOT NULL , `details` VARCHAR(255) NOT NULL , PRIMARY KEY(`id`)) ENGINE = InnoDB;
-    1.CREATE TABLE `db_name`.`clients` ( `id` INT(11) NOT NULL AUTO_INCREMENT ,`name` VARCHAR(255) NOT NULL , `stylist_id` INT(11) NOT NULL , PRIMARY KEY (`id`))ENGINE = InnoDB;
+  *CREATE DATABASE IF NOT EXISTS `db_name` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+  *USE `db_name`;
+  *CREATE TABLE `clients` (`id` int(11) NOT NULL,`name` varchar(255) NOT NULL,`stylist_id` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  *CREATE TABLE `specialties` (`id` int(11) NOT NULL,`description` varchar(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  *CREATE TABLE `stylists` (`id` int(11) NOT NULL,`name` varchar(255) NOT NULL,`details` varchar(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  *CREATE TABLE `stylists_specialties` (`id` int(11) NOT NULL,`stylist_id` int(11) NOT NULL,`specialty_id` int(11) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  *ALTER TABLE `clients`ADD PRIMARY KEY (`id`);
+  *ALTER TABLE `specialties`ADD PRIMARY KEY (`id`);
+  *ALTER TABLE `stylists`ADD PRIMARY KEY (`id`);
+  *ALTER TABLE `stylists_specialties`ADD PRIMARY KEY (`id`);
+  *ALTER TABLE `clients`MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  *ALTER TABLE `specialties`MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  *ALTER TABLE `stylists`MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  *ALTER TABLE `stylists_specialties`MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 1.Navigate to the phpMyAdmin link under tools tab.
 1.Copy database under Operations tab, and name `db_name_test`.
 
@@ -45,6 +55,23 @@
   * README.md outline
 * Initializes git and git pair in project directory
 * Installs packages with `dotnet restore` in test directory and project directory
+
+##Specs
+
+* Program allows user to see a list of all our stylists.
+* Program allows user to select a stylist, see their details, and see a list of all clients that belong to that stylist.
+* Program allows user to add new stylists to database.
+* Program allows user to add new clients to a specific stylist.
+* Program allows user to delete stylists (all and single).
+* Program allows user to delete clients (all and single).
+* Program allows user to view clients (all and single).
+* Program allows user to edit a stylist.
+* Program allows user to edit ALL of the information for a client.
+* Program allows user to add a specialty and view all specialties that have been added.
+* Program allows user to add a specialty to a stylist.
+* Program allows user to click on a specialty and see all of the stylists that have that specialty.
+* Program allows user to see the stylist's specialties on the stylist's details page.
+* Program allows user to be able to add a stylist to a specialty.
 
 ## Contribution Requirements
 

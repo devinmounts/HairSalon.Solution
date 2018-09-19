@@ -31,7 +31,6 @@
         
     <None Remove="README.md" />
     <None Remove="Views\Home\Index.html" />
-    <None Remove="devin_mounts.sql" />
     <None Remove="wwwroot\images\hair01.jpg" />
   </ItemGroup>
   <ItemGroup>
