@@ -43,6 +43,7 @@
     <Content Remove="wwwroot\images\adult-barber-barbershop-897253.jpg" />
     <Content Remove="wwwroot\images\background-black-close-up-952670.jpg" />
     <Content Remove="wwwroot\images\administration-adult-barber-668196.jpg" />
+    <Content Remove="wwwroot\images\Screen Shot 2018-09-18 at 6.50.02 PM.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\Shared\_Layout.cshtml" />
@@ -51,6 +52,7 @@
     <None Include="wwwroot\images\salon01.jpg" />
     <None Include="wwwroot\images\salon02.jpg" />
     <None Include="wwwroot\images\salon03.jpg" />
+    <None Include="wwwroot\images\cover.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\ViewStart.cs" />
